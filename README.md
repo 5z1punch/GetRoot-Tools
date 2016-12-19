@@ -1,5 +1,6 @@
 # GetRoot-Tools
 A tools help you to get root.提权辅助工具
+> Get Root.exe MD5:bf71f9dd276516159c9ace047795b885
 
 ## 功能点
 * Windows的补丁对比
