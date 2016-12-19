@@ -1,0 +1,13 @@
+信息探测类
+ systeminfo ：查看系统版本信息
+ netstat -ano : 查看系统开放端口
+ tasklist /svc : 查看系统进程
+ ipconfig : 查看ip地址
+ whoami : 查看当前用户
+ net user : 查看计算机用户列表
+ net localgroup : 查看计算机用户组列表
+添加用户类
+ net user mstlab mstlab /add : 添加用户并设置密码
+ net localgroup administrators mstlab /add : 将用户加入管理组
+ net user guest /active:yes : 激活guest用户
+ net user guest mstlab : 更改guest用户的密码
