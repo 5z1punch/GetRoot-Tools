@@ -1,0 +1,20 @@
+开启的3389方法：
+
+1.通用开3389(优化后)：
+  wmic RDTOGGLE WHERE ServerName='%COMPUTERNAME%' call SetAllowTSConnections 1
+2.For Win2003:
+  REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal" "Server /v fDenyTSConnections /t REG_DWORD /d 00000000 /f
+3.For Win2008:
+  REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal" "Server /v fDenyTSConnections /t REG_DWORD /d 00000000 /f
+4.For Every:
+  cmd开3389 win08 win03 win7 win2012 winxp
+  win08，三条命令即可:
+  wmic /namespace:\\root\cimv2\terminalservices path win32_terminalservicesetting where (__CLASS != "") call setallowtsconnections 1
+  wmic /namespace:\\root\cimv2\terminalservices path win32_tsgeneralsetting where (TerminalName ='RDP-Tcp') call setuserauthenticationrequired 1
+  reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fSingleSessionPerUser /t REG_DWORD /d 0 /f
+  win2012通用；win7前两条即可。权限需要run as administrator。
+
+  查询终端端口 ：
+  REG query HKLM\SYSTEM\CurrentControlSet\Control\Terminal" "Server\WinStations\RDP-Tcp /v PortNumber
+  (or) 终端端口：tasklist /svc查询TermService对应PID和netstat查询的PID对应的端口号
+  (or) 注册表：HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\ Wds\rdpwd\Tds\tcp 中PortNumber的值
